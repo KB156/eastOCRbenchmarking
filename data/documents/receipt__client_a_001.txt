@@ -1,0 +1,10 @@
+Document Type: receipt_summary
+Client ID: EAST-A001
+Date: 2026-09-28
+Merchant: Tokyo Office Supplies
+Currency: JPY
+Items:
+- printer paper | qty=4 | amount=4800
+- ink cartridge | qty=2 | amount=7600
+Total: 12400
+Summary: Office consumables receipt for monthly reimbursement.

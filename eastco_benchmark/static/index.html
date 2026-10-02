@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>East.Co | Document Benchmarks</title><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script></head>
+<body>
+<header><div class="brand"><img src="/mark.svg" alt="" width="30" height="30"><strong>East.Co</strong><span>Document Benchmarks</span></div><span id="connection" class="badge">Local session</span></header>
+<main>
+<section id="login" hidden><h1>Sign in</h1><form id="loginForm"><label>Workspace password<input id="password" type="password" autocomplete="current-password"></label><button>Sign in</button></form></section>
+<div id="workspace">
+<div class="pageTitle"><div><p class="eyebrow">DOCUMENT PROCESSING</p><h1>Benchmark workspace</h1></div><span id="status" role="status">Ready</span></div>
+<nav aria-label="Workspace views"><button class="tab active" data-view="run">Run benchmark</button><button class="tab" data-view="settings">Connections & costs</button><button class="tab" data-view="results">Results</button></nav>
+<div id="notice" role="alert" hidden></div>
+<section id="view-run" class="view">
+<form id="runForm">
+<div class="sectionTitle"><h2>Input dataset</h2><span>ZIP archive · up to 500 MB</span></div>
+<div class="upload"><label for="dataset">Select dataset</label><input id="dataset" type="file" accept=".zip,application/zip" required><span id="fileMeta">No file selected</span></div>
+<div class="sectionTitle"><h2>Run settings</h2></div>
+<div class="formGrid">
+<label>Processing mode<select id="mode"><option value="dry">Dry run</option><option value="live">Live APIs</option></select></label>
+<label>Pipeline<select id="method"><option value="all">All four methods</option><option value="1">1 · Gemini vision</option><option value="3">3 · PaddleOCR + Gemini</option><option value="4">4 · PaddleOCR-VL</option><option value="5">5 · Hybrid fallback</option></select></label>
+<label>Date filter<input id="date" placeholder="All dates / YYYYMMDD" pattern="[0-9]{8}"></label>
+<label>Submission limit<input id="limit" type="number" min="0" max="1000" value="0"><small>0 = all submissions</small></label>
+<label>Repeats<input id="repeat" type="number" min="1" max="10" value="1"></label>
+<label>Concurrent submissions<input id="concurrency" type="number" min="1" max="8" value="1"></label>
+</div>
+<div class="pipelineList"><div><b>01</b><span>Gemini vision</span><small>Images → structured fields</small></div><div><b>03</b><span>OCR + Gemini</span><small>Text recognition → extraction</small></div><div><b>04</b><span>PaddleOCR-VL</span><small>Document parsing → label matching</small></div><div><b>05</b><span>Hybrid</span><small>OCR + Gemini → vision fallback</small></div></div>
+<div class="actions"><button id="runButton" type="submit">Run benchmark <span aria-hidden="true">→</span></button><progress id="progress" max="100" value="0" hidden></progress><span id="progressText"></span></div>
+</form></section>
+<section id="view-settings" class="view" hidden>
+<div class="sectionTitle"><h2>Connections</h2><span>Secrets are not saved in the browser</span></div>
+<div class="formGrid" id="connections"></div>
+<details open><summary>Usage rates</summary><p class="hint">Use your contract currency and rates. Blank means unknown, not free.</p><div class="formGrid" id="rates"></div></details>
+<details><summary>Infrastructure & overhead</summary><p class="hint">Allocated costs for the entire run, excluding active processing already priced above. Enter 0 explicitly when a category does not apply.</p><div class="formGrid" id="overhead"></div></details>
+<details><summary>Billing export</summary><p class="hint">Optional Google Cloud Billing export. Charges arrive later; refresh after your run. Selected-project charges are reported separately from estimates.</p><div class="formGrid" id="billing"></div></details>
+<details><summary>Advanced settings</summary><div class="formGrid" id="advanced"></div></details>
+<div class="actions"><button id="envDownload" type="button" class="secondary">Download settings (.env)</button><span class="hint">Download includes entered secrets. Store privately.</span></div>
+</section>
+<section id="view-results" class="view" hidden>
+<div id="empty"><h2>No results yet</h2><p>Choose a dataset and run a benchmark.</p></div>
+<div id="report" hidden>
+<div class="sectionTitle"><h2>Run comparison</h2><div class="actions compact"><a id="summaryDownload" class="linkButton">Summary JSON ↓</a><a id="detailsDownload" class="linkButton">Per-submission JSONL ↓</a><button id="deleteRun" class="secondary">Delete run</button></div></div>
+<div id="runMeta" class="hint"></div><div id="costState" class="costState"></div>
+<div class="metrics"><div><span>Estimated total</span><strong id="total">—</strong></div><div><span>Submissions per method</span><strong id="count">—</strong></div><div><span>Images per pass</span><strong id="images">—</strong></div><div><span>Cost coverage</span><strong id="coverage">—</strong></div></div>
+<div class="tableScroll"><table><thead><tr><th>Method</th><th>Total estimate</th><th>Cost / submission</th><th>p50</th><th>p95</th><th>Accuracy</th><th>Failures</th><th>Fallbacks</th></tr></thead><tbody id="comparison"></tbody></table></div>
+<div class="sectionTitle"><h2>Cost breakdown</h2></div><div id="costBreakdown"></div>
+<div class="sectionTitle"><h2>Billing reconciliation</h2><button id="refreshBilling" class="secondary">Refresh billing ↻</button></div><p id="billingState" class="hint">Billing export has not been queried.</p><div id="billingTable" class="tableScroll"></div>
+<details><summary>Usage & performance details</summary><pre id="usage"></pre></details>
+</div></section>
+</div></main><footer>East.Co · Cloud document processing <span id="footerState">AI Studio + Cloud Run</span></footer>
+</body></html>

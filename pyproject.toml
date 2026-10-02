@@ -1,0 +1,16 @@
+[project]
+name = "eastco-ocr-benchmark"
+version = "0.1.0"
+description = "Benchmark demo for East.Co API and cloud document-processing alternatives."
+requires-python = ">=3.10"
+dependencies = ["requests>=2.32,<3", "pypdf>=5,<7", "openpyxl>=3.1,<4", "google-auth>=2.38,<3"]
+
+[project.scripts]
+eastco-benchmark = "eastco_benchmark.app:main"
+eastco-web = "eastco_benchmark.web:main"
+
+[tool.setuptools]
+packages = ["eastco_benchmark", "eastco_benchmark.adapters", "eastco_benchmark.pipelines", "eastco_benchmark.benchmark"]
+
+[tool.setuptools.package-data]
+eastco_benchmark = ["static/*"]

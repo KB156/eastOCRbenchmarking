@@ -1,0 +1,10 @@
+Document Type: daily_report
+Client ID: EAST-B001
+Date: 2026-09-28
+Site: Osaka Distribution Center
+Currency: JPY
+Items:
+- inbound cartons | qty=320 | amount=0
+- outbound cartons | qty=285 | amount=0
+Total: 0
+Summary: Daily logistics report. No direct payment amount; operational quantities only.

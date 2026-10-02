@@ -1,0 +1,8 @@
+FROM python:3.12-slim
+WORKDIR /app
+COPY pyproject.toml pricing.live.json ./
+COPY eastco_benchmark ./eastco_benchmark
+RUN pip install --no-cache-dir . && useradd --create-home appuser
+USER appuser
+ENV WEB_HOST=0.0.0.0 PORT=8080 WEB_SECURE_COOKIE=true
+CMD ["python", "-m", "eastco_benchmark.web"]

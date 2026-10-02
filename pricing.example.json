@@ -1,0 +1,25 @@
+{
+  "_note": "Example only. Do not treat these as provider prices. Replace every unit price with current contract/provider pricing before using results for decisions.",
+  "direct_vlm": {
+    "per_api_call": 0.0,
+    "per_page": 0.0,
+    "per_1k_input_tokens": 0.0,
+    "per_1k_output_tokens": 0.0,
+    "per_image": 0.0
+  },
+  "ocr_api": {
+    "per_api_call": 0.0,
+    "per_page": 0.0
+  },
+  "llm_api": {
+    "per_api_call": 0.0,
+    "per_1k_input_tokens": 0.0,
+    "per_1k_output_tokens": 0.0
+  },
+  "cloud_hosted_model": {
+    "per_api_call": 0.0,
+    "per_page": 0.0,
+    "per_inference_second": 0.0,
+    "per_gpu_second": 0.0
+  }
+}

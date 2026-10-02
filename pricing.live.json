@@ -1,0 +1,7 @@
+{
+  "_note": "Unknown prices are null, never free. Rates are per single token/image/second in one chosen currency. Set only billable dimensions. Cloud compute estimates exclude idle instances and overhead; reconcile with billing.",
+  "gemini_vlm": {"input_tokens": null, "output_tokens": null},
+  "gemini_llm": {"input_tokens": null, "output_tokens": null},
+  "paddle_ocr": {"inference_seconds": null},
+  "paddle_vl": {"inference_seconds": null}
+}

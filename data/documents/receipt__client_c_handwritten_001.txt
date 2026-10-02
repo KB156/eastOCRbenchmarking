@@ -1,0 +1,10 @@
+Document Type: receipt_summary
+Client ID: EAST-C001
+Date: 2026-09-29
+Merchant: Handwritten Cafe Receipt
+Currency: JPY
+Items:
+- client lunch | qty=3 | amount=4500
+- tea service | qty=3 | amount=1500
+Total: 6000
+Summary: Simulated handwritten receipt with lower OCR confidence.
